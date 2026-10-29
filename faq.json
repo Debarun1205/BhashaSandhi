@@ -1,0 +1,22 @@
+[
+  {
+    "keywords": ["who are you", "what are you", "what is this", "तुम कौन", "आप कौन", "यह क्या", "তুমি কে", "আপনি কে", "ଆପଣ କିଏ"],
+    "answer": "I am Team J's multilingual voice assistant, built at the Hack4Haldia 2026 hackathon. You speak in Hindi or Bengali, and I reply out loud in the same language. I can also type and speak Odia."
+  },
+  {
+    "keywords": ["language", "languages", "भाषा", "ভাষা", "ଭାଷା"],
+    "answer": "I understand spoken Hindi and Bengali, and typed Odia. I can speak back in Hindi, Bengali, Odia and English. Whisper has no Odia model, so Odia input is typed."
+  },
+  {
+    "keywords": ["model", "models", "open source", "open-source", "मॉडल", "মডেল", "ମଡେଲ"],
+    "answer": "Speech recognition uses OpenAI Whisper large-v3, understanding and replies use Google Gemma 4 through the Gemini API, and the voice uses Meta MMS-TTS. All three are open-weight models."
+  },
+  {
+    "keywords": ["image", "photo", "picture", "तस्वीर", "फोटो", "ছবি", "ଫଟୋ"],
+    "answer": "You can attach a photo and ask a question about it. Gemma 4 is multimodal, so it looks at the picture and answers in your language."
+  },
+  {
+    "keywords": ["hackathon", "team", "built", "who made", "हैकथॉन", "টিম"],
+    "answer": "This was built by Team J in three hours at the Hack4Haldia 2026 hackathon."
+  }
+]

@@ -1,0 +1,6 @@
+{$DOMAIN} {
+	encode gzip
+	reverse_proxy app:8080 {
+		flush_interval -1   # lets streamed (SSE) replies through immediately
+	}
+}

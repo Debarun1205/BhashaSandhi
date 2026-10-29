@@ -1,0 +1,12 @@
+flask>=3.0
+flask-cors>=4.0
+gunicorn>=22.0
+python-dotenv>=1.0
+requests>=2.31
+numpy>=1.26
+scipy>=1.11
+pillow>=10.3
+google-genai>=1.0
+gtts>=2.5
+transformers>=4.44
+torch>=2.2

@@ -1,0 +1,2 @@
+# Optional: run Whisper on the server itself (no Groq key needed, but slower and uses more RAM).
+faster-whisper>=1.0

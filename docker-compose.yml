@@ -1,0 +1,30 @@
+# For a plain DigitalOcean Droplet: app + Caddy, which gets a free HTTPS certificate automatically.
+# (Browsers only allow the microphone on https.)  Usage: see DEPLOY.md, Path B.
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      PORT: "8080"
+      DB_PATH: /app/data/team_j.db
+    volumes:
+      - appdata:/app/data
+    expose:
+      - "8080"
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN:?set DOMAIN in .env, e.g. 203-0-113-10.sslip.io}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    depends_on:
+      - app
+volumes:
+  appdata:
+  caddy_data:

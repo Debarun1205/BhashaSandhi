@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bolo: Multilingual Voice Assistant</title>
+<meta name="description" content="Speak Hindi or Bengali, get a spoken reply. Whisper + Gemma 4 + Meta MMS-TTS, all open-weight.">
+<meta name="theme-color" content="#0e1116">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23f59e0b'/%3E%3Crect x='26' y='12' width='12' height='26' rx='6' fill='%230e1116'/%3E%3Cpath d='M18 30a14 14 0 0 0 28 0M32 44v8' stroke='%230e1116' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600&family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Oriya:wght@400;600&family=Sora:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div id="offline" class="offline" hidden role="status"></div>
+
+<header class="top">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor" stroke="none"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/></svg>
+    </span>
+    <div>
+      <h1>Bolo <span class="scripts">बोलो · বলো · କୁହ</span></h1>
+      <p class="sub">Speak. Get a spoken reply in your language.</p>
+    </div>
+  </div>
+</header>
+
+<nav class="langs" id="langs" aria-label="Language">
+  <button class="chip on" data-lang="auto">Auto-detect</button>
+  <button class="chip" data-lang="hi" lang="hi">हिन्दी</button>
+  <button class="chip" data-lang="bn" lang="bn">বাংলা</button>
+  <button class="chip" data-lang="or" lang="or">ଓଡ଼ିଆ <small>type</small></button>
+  <button class="chip" data-lang="en">English</button>
+</nav>
+
+<main id="chat" class="chat" aria-live="polite">
+  <section class="hero" id="hero">
+    <p class="hero-line">Tap the mic and talk. Try:</p>
+    <div class="suggest" id="suggest"></div>
+    <p class="hint">Hindi and Bengali: speak or type. Odia: type, and hear the reply spoken.<br>Attach a photo to ask about it (Gemma 4 vision).</p>
+  </section>
+</main>
+
+<div class="stepper" id="stepper" hidden aria-live="polite">
+  <span data-step="listening">Listening</span><i></i>
+  <span data-step="transcribing">Transcribing</span><i></i>
+  <span data-step="thinking">Thinking</span><i></i>
+  <span data-step="speaking">Speaking</span>
+</div>
+
+<div class="preview" id="preview" hidden>
+  <img id="previewImg" alt="Attached photo preview">
+  <button id="removeImg" aria-label="Remove photo">&times;</button>
+</div>
+
+<footer class="dock">
+  <div class="row">
+    <label class="icon-btn" for="imageInput" title="Attach a photo" aria-label="Attach a photo">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><circle cx="9" cy="11" r="2"/><path d="m21 16-5-5-9 8"/></svg>
+    </label>
+    <input id="imageInput" type="file" accept="image/*" hidden>
+    <input id="text" class="text" type="text" placeholder="Or type here…" autocomplete="off" aria-label="Type a message">
+    <button id="send" class="icon-btn" aria-label="Send">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 14-8-4 16-3-7z"/></svg>
+    </button>
+  </div>
+  <button id="mic" class="mic" aria-label="Start recording">
+    <span class="ring"></span>
+    <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3" fill="currentColor" stroke="none"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/></svg>
+  </button>
+  <p class="micnote" id="micnote">Tap to talk</p>
+  <p class="powered">
+    Powered by open-weight models:
+    <a href="https://huggingface.co/openai/whisper-large-v3" target="_blank" rel="noopener">Whisper large-v3</a> ·
+    <a href="https://ai.google.dev/gemma" target="_blank" rel="noopener">Gemma 4</a> (Gemini API) ·
+    <a href="https://huggingface.co/facebook/mms-tts-hin" target="_blank" rel="noopener">Meta MMS-TTS</a>
+  </p>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
